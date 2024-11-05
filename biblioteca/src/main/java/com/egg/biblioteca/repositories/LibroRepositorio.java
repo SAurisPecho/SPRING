@@ -17,4 +17,8 @@ public interface LibroRepositorio extends JpaRepository<Libro, Long>{
 
     @Query("SELECT l FROM Libro l WHERE l.autor.nombre = :nombre")
     public List<Libro> buscarPorAutor (@Param("nombre") String nombre);
+
+     // Nuevo método para buscar libros por el número de ejemplares
+    @Query("SELECT l FROM Libro l WHERE l.ejemplares >= :ejemplares")
+    public List<Libro> buscarPorEjemplares(@Param("ejemplares") Integer ejemplares);
 }
