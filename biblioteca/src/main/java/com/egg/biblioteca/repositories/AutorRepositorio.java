@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.egg.biblioteca.entities.Autor;
 
 @Repository
-public interface AutorRepositorio extends JpaRepository<Autor, String>{
+public interface AutorRepositorio extends JpaRepository<Autor, UUID>{
     
     @Query("SELECT a FROM Autor a WHERE a.id = :id")
     Autor buscarPorTitulo(@Param("id") UUID id);
