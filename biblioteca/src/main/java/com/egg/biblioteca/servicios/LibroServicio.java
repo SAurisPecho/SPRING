@@ -1,4 +1,4 @@
-package com.egg.biblioteca.services;
+package com.egg.biblioteca.servicios;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.egg.biblioteca.entities.Autor;
-import com.egg.biblioteca.entities.Editorial;
-import com.egg.biblioteca.entities.Libro;
-import com.egg.biblioteca.exceptions.MiException;
-import com.egg.biblioteca.repositories.AutorRepositorio;
-import com.egg.biblioteca.repositories.EditorialRepositorio;
-import com.egg.biblioteca.repositories.LibroRepositorio;
+import com.egg.biblioteca.entidades.Autor;
+import com.egg.biblioteca.entidades.Editorial;
+import com.egg.biblioteca.entidades.Libro;
+import com.egg.biblioteca.excepciones.MiException;
+import com.egg.biblioteca.repositorios.AutorRepositorio;
+import com.egg.biblioteca.repositorios.EditorialRepositorio;
+import com.egg.biblioteca.repositorios.LibroRepositorio;
 
 @Service
 public class LibroServicio {

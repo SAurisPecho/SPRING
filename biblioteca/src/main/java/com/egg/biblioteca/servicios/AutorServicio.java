@@ -1,4 +1,4 @@
-package com.egg.biblioteca.services;
+package com.egg.biblioteca.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.egg.biblioteca.entities.Autor;
-import com.egg.biblioteca.exceptions.MiException;
-import com.egg.biblioteca.repositories.AutorRepositorio;
+import com.egg.biblioteca.entidades.Autor;
+import com.egg.biblioteca.excepciones.MiException;
+import com.egg.biblioteca.repositorios.AutorRepositorio;
 
 @Service
 public class AutorServicio {

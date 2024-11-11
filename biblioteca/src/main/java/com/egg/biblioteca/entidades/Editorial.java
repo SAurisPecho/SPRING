@@ -1,4 +1,4 @@
-package com.egg.biblioteca.entities;
+package com.egg.biblioteca.entidades;
 
 import java.util.UUID;
 
@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Autor {
+public class Editorial {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +16,7 @@ public class Autor {
 
     private String nombre;
 
-    public Autor() {
+    public Editorial() {
     }
 
     public UUID getId() {
@@ -34,6 +34,4 @@ public class Autor {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    
 }

@@ -1,4 +1,4 @@
-package com.egg.biblioteca.entities;
+package com.egg.biblioteca.entidades;
 
 import java.util.Date;
 

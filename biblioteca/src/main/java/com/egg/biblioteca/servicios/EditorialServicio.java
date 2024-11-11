@@ -1,4 +1,4 @@
-package com.egg.biblioteca.services;
+package com.egg.biblioteca.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.egg.biblioteca.entities.Editorial;
-import com.egg.biblioteca.exceptions.MiException;
-import com.egg.biblioteca.repositories.EditorialRepositorio;
+import com.egg.biblioteca.entidades.Editorial;
+import com.egg.biblioteca.excepciones.MiException;
+import com.egg.biblioteca.repositorios.EditorialRepositorio;
 
 @Service
 public class EditorialServicio {
+    
     public void validar(String nombre) throws MiException {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre de la editorial no puede ser nulo o estar vacío");

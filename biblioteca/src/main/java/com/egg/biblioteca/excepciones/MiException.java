@@ -1,4 +1,4 @@
-package com.egg.biblioteca.exceptions;
+package com.egg.biblioteca.excepciones;
 
 public class MiException extends Exception {
     

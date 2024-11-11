@@ -1,4 +1,4 @@
-package com.egg.biblioteca.repositories;
+package com.egg.biblioteca.repositorios;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.egg.biblioteca.entities.Libro;
+import com.egg.biblioteca.entidades.Libro;
 
 @Repository
 public interface LibroRepositorio extends JpaRepository<Libro, Long>{
