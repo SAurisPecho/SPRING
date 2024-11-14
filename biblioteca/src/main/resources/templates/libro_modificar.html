@@ -2,23 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="ISO-8859-1">
-        <title>Registro de Editoriales</title>
+        <title>Modificar Libro</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/formulario.css">
     </head>
     <body>
-
-       <nav class="navbar navbar-expand-lg navBar">
+        <nav class="navbar navbar-expand-lg navBar">
             <div class="containerImg">
                 <a href="/" class="navbar-brand d-flex align-items-center">
-                  <img class="logo" src="/img/Egg.png" alt="Img logo egg">
+                    <img class="logo" src="/img/Egg.png" alt="Img logo egg">
                 </a>
-              </div>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
-              <ul class="navbar-nav ms-auto elementos">
+                <ul class="navbar-nav ms-auto elementos">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Libros
@@ -31,8 +30,6 @@
                         <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Libros</a></li>
                     </ul>
                 </li>
-
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Autores
@@ -41,13 +38,10 @@
                         
                         <li><a class="dropdown-item" th:href="@{/autor/registrar}">Crear Autor</a></li>
                         <li><hr class="dropdown-divider"></li>
-                       
+                        
                         <li><a class="dropdown-item" th:href="@{/autor/lista}">Listar Autores</a></li>
                     </ul>
                 </li>
-
-
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Editoriales
@@ -60,21 +54,64 @@
                         <li><a class="dropdown-item" th:href="@{/editorial/lista}">Listar Editoriales</a></li>
                     </ul>
                 </li>
-            </ul>
+                </ul>
             </div>
         </nav>
         <div class="container-fluid m-5 contenedor">
-
-            <form class="formulario" th:action="@{/editorial/registro}" method="post">
+            <form class="formulario" th:action="@{/libro/modificar/{isbn}(isbn=${libro.isbn})}" method="post">
+                                
                 <div class="form-group my-3">
-                    <label class="mb-2" for="nombre">Nombre de la editorial:</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de la editorial" >
+                    <label class="mb-2">ISBN</label> 
+                    <input type="number" class="form-control" name="isbn"  th:value= "${isbn}" readonly>
                 </div>
-                <button type="submit"  class="btn btn-primary mt-3 botones">Guardar</button>
-            </form>
-            <p th:if="${error}" th:text="${error}" style="color:red;"></p>
 
-                    <section class=" text-center container">
+                <div class="form-group my-3">
+                    <label class="mb-2">Titulo</label> 
+                    <input th:value="${libro.titulo}" type="text" class="form-control" name="titulo" placeholder="Título del Libro" required>
+                </div>
+
+                <div class="form-group my-3">
+                    <label class="mb-2">Ejemplares</label> 
+                    <input th:value="${libro.ejemplares}" type="number" class="form-control" name="ejemplares"  placeholder="Número de ejemplares" required>
+                </div>
+
+                <div class="form-group my-3">
+                    <label class="mb-2">Fecha de Alta (yyyy-MM-dd)</label> 
+                    <input th:value= "${libro.alta}" type="text" class="form-control" name="alta" readonly>
+                </div>
+
+                <div class="form-group my-3">
+                    <label class="mb-2" for="autor">Autor:</label> 
+                    <select  name="idAutor" id="autor" class="form-control" required>
+                        <option value="">Seleccione un autor</option>
+                        <option  th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group my-3">
+                    <label class="mb-2" for="editorial">Editorial:</label> 
+                    <select  name="idEditorial" id="editorial" class="form-control" required>
+                        <option value="">Seleccione una editorial</option>
+                        <option  th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
+                
+            </form>
+            <div th:if="${exito} != null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                <div class="card-body">
+                    <h5 class="card-title">Exito 👍</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>
+            <div th:if="${error} != null" class="card text-white bg-danger mb-3 mensajeError" >
+                <div class="card-body">
+                    <h5 class="card-title">Error 👎</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+            <section class=" text-center container">
                 <div class="row mt-3">
                     <div class="divVolver">
                         <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
@@ -82,7 +119,6 @@
                 </div>
             </section>
         </div>
-
         <footer class="text-muted py-5">
             <div class="containerFooter">
                 <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
@@ -92,8 +128,6 @@
                 </p>
             </div>
         </footer>
-
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
-</html>
+</html> 

@@ -50,4 +50,9 @@ public class EditorialServicio {
             editorialRepositorio.save(editorial);
         }
     }
+
+    @Transactional(readOnly = true)
+    public Editorial getOne (UUID id) {
+        return editorialRepositorio.getReferenceById(id);
+    }
 }
