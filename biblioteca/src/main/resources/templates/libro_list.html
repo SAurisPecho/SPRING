@@ -90,7 +90,7 @@
                         <th scope="row" th:text="${libro.isbn}"></th>
                         <td th:text="${libro.titulo}"></td>
                         <td th:text="${libro.ejemplares}"></td>
-                        <td th:text="${#dates.format(libro.alta, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${libro.alta}"></td>
                         <td th:text="${libro.autor.nombre}"></td>
                         <td th:text="${libro.editorial.nombre}"></td>
                         <td>
