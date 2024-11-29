@@ -80,7 +80,7 @@
                     <tr >
                         <th scope="col">Id del Usuario</th>
                         <th scope="col">Nombre</th>
-                        <!-- <th scope="col">Foto de Perfil</th> -->
+                        <th scope="col">Foto de Perfil</th>
                         <th scope="col">Rol</th>
                         <th scope="col">Cambiar Rol</th>
                         <th scope="col">Modificar</th>
@@ -90,11 +90,11 @@
                     <tr>
                         <th scope="row" th:text="${usuario.id}"></th>
                         <td th:text="${usuario.nombre}"></td>
-                        <!-- <td>
+                        <td>
                             <a th:if="${usuario.imagen != null}" th:href="@{'/perfil/' + ${usuario.id}}">
                                 <img class="logo" th:src="@{'/imagen/perfil/' + ${usuario.id}}" alt="Perfil del usuario" />
                             </a>
-                        </td> -->
+                        </td>
                         <td th:text="${usuario.rol}"></td>
                         <td>
                             <a th:href="@{'/admin/modificarRol/' + ${usuario.id}}">
