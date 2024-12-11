@@ -20,8 +20,8 @@ import com.egg.biblioteca.repositorios.LibroRepositorio;
 @Service
 public class LibroServicio {
     private void validar(Long isbn, String titulo, Integer ejemplares, Date alta, Autor autor, Editorial editorial) throws MiException {
-        if (isbn == null) {
-            throw new MiException("El ISBN no puede ser nulo");
+        if (isbn == null || String.valueOf(isbn).length() != 13) {
+            throw new MiException("El ISBN no puede ser nulo o el ISBN debe tener exactamente 13 dígitos");
         }
         if (titulo == null || titulo.trim().isEmpty()) {
             throw new MiException("El título no puede ser nulo o estar vacío");
